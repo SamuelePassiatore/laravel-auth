@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <h1>Projects</h1>
+    <header class="my-4">
+        <h1>Projects</h1>
+    </header>
 
     <table class="table">
         <thead>
@@ -13,7 +15,6 @@
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Url</th>
-                <th scope="col">Updated at</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -24,14 +25,13 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
-                    <td>{{ $project->updated_at }}</td>
                     <td><a class="btn btn-small btn-primary" href="{{ route('admin.projects.show', $project->id) }}"><i
                                 class="fa-solid fa-eye"></i></a>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td scope="row" colspan="6" class="text-center">There aren't projects in portfolio</td>
+                    <td scope="row" colspan="5" class="text-center">There aren't projects in portfolio</td>
                 </tr>
             @endforelse
 
