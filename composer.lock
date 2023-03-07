@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6a477c81a5804f73b34be8ffe9ec0a2",
+    "content-hash": "6561c520a5395a1dd5115e64901586a8",
     "packages": [
         {
             "name": "brick/math",
@@ -980,6 +980,54 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
+        },
+        {
+            "name": "lanciweb/laravel-make-view",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LanciWeb/laravel-make-view.git",
+                "reference": "79c1a78613979eebe532f22827ecc14e10dede47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LanciWeb/laravel-make-view/zipball/79c1a78613979eebe532f22827ecc14e10dede47",
+                "reference": "79c1a78613979eebe532f22827ecc14e10dede47",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LanciWeb\\LaravelMakeView\\LaravelMakeViewServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LanciWeb\\LaravelMakeView\\": "src/",
+                    "LanciWeb\\LaravelMakeView\\Commands\\": "src/Commands/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Lancellotti",
+                    "email": "lancellotti.marco@yahoo.it"
+                }
+            ],
+            "description": "A Laravel package that allows to generate blade views via Artisan",
+            "support": {
+                "issues": "https://github.com/LanciWeb/laravel-make-view/issues",
+                "source": "https://github.com/LanciWeb/laravel-make-view/tree/v1.2.1"
+            },
+            "time": "2023-03-07T08:05:00+00:00"
         },
         {
             "name": "laravel/framework",
