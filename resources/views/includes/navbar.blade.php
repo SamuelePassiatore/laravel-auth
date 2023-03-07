@@ -16,7 +16,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                    <a class="nav-link @if (Route::is('admin.home')) active @endif"
+                        href="{{ url('/') }}">{{ __('Home') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if (Route::is('admin.projects.index')) active @endif"
+                        href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
                 </li>
             </ul>
 
