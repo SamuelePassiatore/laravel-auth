@@ -43,7 +43,9 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return to_route('admin.projects.show', $project->id);
+        return to_route('admin.projects.show', $project->id)
+            ->with('message', "Creazione progetto '$project->title' avvenuta con successo")
+            ->with('type', 'success');
     }
 
     /**
@@ -77,7 +79,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
-            ->with('message', "Il progetto $project->title è stata eliminato con successo")
+            ->with('message', "Eliminazione progetto '$project->title' avvenuta con successo")
             ->with('type', 'success');
     }
 }
