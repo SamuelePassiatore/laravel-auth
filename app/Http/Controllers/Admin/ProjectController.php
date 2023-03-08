@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -32,6 +33,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|unique:projects',
+            'image' => 'nullable|url',
+            'description' => 'string',
+            'url' => 'nullable|url|unique:projects',
+        ], [
+            'title.unique' => "Esiste già un progetto dal titolo '$request->title'",
+            'title.required' => "Il titolo è obbligatorio",
+            'image.url' => "L'immagine dev'essere un url",
+            'description.string' => 'La descrizione deve essere una stringa',
+            'url.url' => 'L\'url deve essere un url',
+            'url.unique' => 'L\'url deve essere unico',
+        ]);
+
         $data = $request->all();
 
         $project = new Project();
@@ -70,6 +85,20 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $request->validate([
+            'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
+            'image' => 'nullable|url',
+            'description' => 'string',
+            'url' => ['nullable', 'url', Rule::unique('projects')->ignore($project->id)],
+        ], [
+            'title.unique' => "Esiste già un progetto dal titolo '$request->title'",
+            'title.required' => "Il titolo è obbligatorio",
+            'image.url' => "L'immagine dev'essere un url",
+            'description.string' => 'La descrizione deve essere una stringa',
+            'url.url' => 'L\'url deve essere un url',
+            'url.unique' => 'L\'url deve essere unico',
+        ]);
+
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']);
         $project->update($data);
