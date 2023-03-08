@@ -15,6 +15,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Url</th>
+                <th scope="col">Update at</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
+                    <td>{{ $project->updated_at }}</td>
                     <td class="d-flex justify-content-end align-items-center">
                         <a class="btn btn-small btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
                             <i class="fas fa-eye"></i>
