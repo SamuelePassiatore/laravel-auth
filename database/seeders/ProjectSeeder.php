@@ -15,14 +15,13 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $projectsConfig = config('projects');
-        foreach ($projectsConfig as $projectConfig) {
+        for ($i = 0; $i < 5; $i++) {
             $project = new Project();
-            $project->title = $projectConfig['title'];
-            $project->description = $projectConfig['description'];
+            $project->title = $faker->sentence;
+            $project->description = $faker->paragraph();
             $project->image = "https://picsum.photos/id/" . $faker->numberBetween(1, 50) . "/200";
             $project->slug = Str::slug($project->title, '-');
-            $project->url = $projectConfig['url'];
+            $project->url = $faker->url();
             $project->save();
         }
     }
