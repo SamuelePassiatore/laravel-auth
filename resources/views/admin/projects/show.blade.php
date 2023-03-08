@@ -28,13 +28,17 @@
 
             {{-- BUTTONS --}}
             <div class="d-flex justify-content-center my-5">
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Torna indietro</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Torna indietro</a>
                 <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form"
                     data-name="progetto">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-danger mx-2">Elimina</button>
+                    <button type="submit" class="btn btn-danger mx-2"><i class="fas fa-trash me-2"></i>Elimina</button>
                 </form>
+                <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
+                    <i class="fas fa-pencil me-2"></i>Modifica
+                </a>
             </div>
         </div>
     </section>

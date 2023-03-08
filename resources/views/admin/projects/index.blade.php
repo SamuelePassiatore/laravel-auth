@@ -41,6 +41,9 @@
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
+                        <a class="btn btn-small btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
+                            <i class="fas fa-pencil"></i>
+                        </a>
                     </td>
 
                 </tr>
