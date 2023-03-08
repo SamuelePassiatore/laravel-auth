@@ -4,8 +4,10 @@
 
 @section('content')
 
-    <header class="my-4">
+    <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-small btn-success">
+            <i class="fas fa-plus me-2"></i>Aggiungi progetto</a>
     </header>
 
     <table class="table">
