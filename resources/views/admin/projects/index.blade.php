@@ -25,9 +25,19 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
-                    <td><a class="btn btn-small btn-primary" href="{{ route('admin.projects.show', $project->id) }}"><i
-                                class="fa-solid fa-eye"></i></a>
+                    <td class="d-flex justify-content-end align-items-center">
+                        <a class="btn btn-small btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-small btn-danger mx-2">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
+
                 </tr>
             @empty
                 <tr>
