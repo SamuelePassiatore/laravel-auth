@@ -28,7 +28,8 @@
             {{-- BUTTONS --}}
             <div class="d-flex justify-content-center my-5">
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Torna indietro</a>
-                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form"
+                    data-name="progetto">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger mx-2">Elimina</button>
