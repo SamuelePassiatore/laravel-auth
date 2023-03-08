@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title', 100)->unique();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('slug');
-            $table->string('url')->nullable();
+            $table->string('slug')->unique();
+            $table->string('url')->unique()->nullable();
             $table->timestamps();
         });
     }
