@@ -95,7 +95,7 @@ class ProjectController extends Controller
             'title.required' => "Il titolo è obbligatorio",
             'image.url' => "L'immagine dev'essere un url",
             'description.string' => 'La descrizione deve essere una stringa',
-            'url.url' => 'L\'url deve essere un url',
+            'url.url' => 'L\'url inserito non è valido',
             'url.unique' => 'L\'url deve essere unico',
         ]);
 
