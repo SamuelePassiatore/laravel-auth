@@ -8,7 +8,7 @@
         <h1>Modifica progetto</h1>
     </header>
     <hr>
-
+    @include('includes.projects.form')
 
 @endsection
 
