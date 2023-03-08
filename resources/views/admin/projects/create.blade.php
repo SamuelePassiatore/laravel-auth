@@ -12,28 +12,21 @@
         @csrf
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="mb-3">
                     <label for="title" class="form-label">Titolo:</label>
                     <input type="text" class="form-control" id="title" placeholder="Titolo progetto" name="title"
                         required value="">
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine:</label>
                     <input type="url" class="form-control" id="image" placeholder="Immagine progetto" name="image"
                         value="">
                 </div>
             </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="slug" class="form-label">Slug:</label>
-                    <input type="text" class="form-control" id="slug" placeholder="Slug" name="slug"
-                        value="">
-                </div>
-            </div>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="mb-3">
                     <label for="url" class="form-label">Url:</label>
                     <input type="text" class="form-control" id="url" placeholder="Url progetto" name="url"

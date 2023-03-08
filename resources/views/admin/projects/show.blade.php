@@ -22,6 +22,7 @@
                     </div>
                     <div class="my-2"><strong>Slug: </strong> {{ $project->slug }} </div>
                     <div class="my-2"><strong>Url: </strong> {{ $project->url }} </div>
+                    <div class="my-2"><strong>Ultima modifica: </strong> {{ $project->updated_at }} </div>
                 </div>
             </div>
 
