@@ -60,7 +60,12 @@
 
         </tbody>
     </table>
-
+    <hr>
+    <div class="d-flex justify-content-end">
+        @if ($projects->hasPages())
+            {{ $projects->links() }}
+        @endif
+    </div>
 @endsection
 
 @section('scripts')

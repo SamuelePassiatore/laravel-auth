@@ -40,7 +40,7 @@
                         <form action="{{ route('admin.projects.trash.drop', $project->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete Permanently</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
 
@@ -58,6 +58,11 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Empty trash</button>
         </form>
+    </div>
+    <div class="d-flex justify-content-end">
+        @if ($projects->hasPages())
+            {{ $projects->links() }}
+        @endif
     </div>
 @endsection
 
