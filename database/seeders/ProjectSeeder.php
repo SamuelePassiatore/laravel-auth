@@ -22,6 +22,7 @@ class ProjectSeeder extends Seeder
             // $project->image = "https://picsum.photos/id/" . $faker->numberBetween(1, 50) . "/200";
             $project->slug = Str::slug($project->title, '-');
             $project->url = $faker->url();
+            $project->is_public = $faker->boolean();
             $project->save();
         }
     }

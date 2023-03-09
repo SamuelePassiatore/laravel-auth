@@ -31,19 +31,21 @@
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
                     <td>{{ $project->updated_at }}</td>
-                    <td class="d-flex justify-content-end align-items-center">
-                        <form action="{{ route('admin.projects.trash.restore', $project->id) }}" method="POST"
-                            class="restore-form" data-name="project">
-                            @csrf
-                            @method('PATCH')
-                            <button class="btn btn-primary me-2" type="submit">Restore</button>
-                        </form>
-                        <form action="{{ route('admin.projects.trash.drop', $project->id) }}" method="POST"
-                            class="delete-definitive-form" data-name="project">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
+                    <td>
+                        <div class="d-flex">
+                            <form action="{{ route('admin.projects.trash.restore', $project->id) }}" method="POST"
+                                class="restore-form" data-name="project">
+                                @csrf
+                                @method('PATCH')
+                                <button class="btn btn-primary me-2" type="submit">Restore</button>
+                            </form>
+                            <form action="{{ route('admin.projects.trash.drop', $project->id) }}" method="POST"
+                                class="delete-definitive-form" data-name="project">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </div>
                     </td>
 
                 </tr>

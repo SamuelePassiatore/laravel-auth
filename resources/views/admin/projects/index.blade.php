@@ -33,21 +33,24 @@
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
                     <td>{{ $project->updated_at }}</td>
-                    <td class="d-flex justify-content-end align-items-center">
-                        <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST"
-                            class="delete-form" data-name="project">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger mx-2">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                        <a class="btn btn-sm btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
-                            <i class="fas fa-pencil"></i>
-                        </a>
+                    <td>
+                        <div class="d-flex">
+                            <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST"
+                                class="delete-form" data-name="project">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger mx-2">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                            <a class="btn btn-sm btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
+                                <i class="fas fa-pencil"></i>
+                            </a>
+                        </div>
+
                     </td>
 
                 </tr>
