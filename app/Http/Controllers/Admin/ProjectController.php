@@ -176,9 +176,9 @@ class ProjectController extends Controller
             ->with('type', 'success');
     }
 
-    public function togglePubblic(Project $project)
+    public function toggle(Project $project)
     {
-        $project->is_publish = !$project->is_publish;
+        $project->is_public = !$project->is_public;
         $action = $project->is_public ? 'published' : 'drafted';
         $type = $project->is_public ? 'success' : 'info';
         $project->save();

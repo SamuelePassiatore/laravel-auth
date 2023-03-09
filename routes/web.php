@@ -24,6 +24,8 @@ Route::get('/', [GuestHomeController::class, 'index']);
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('/admin')->group(function () {
     // Dashboard routes
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    // Toggle routes
+    Route::patch('/projects/{project}/toggle', [ProjectController::class, 'toggle'])->name('projects.toggle');
     //TRASH
     Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash.index');
     Route::patch('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.trash.restore');

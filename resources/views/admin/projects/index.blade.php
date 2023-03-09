@@ -33,7 +33,16 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
-                    <td>{{ $project->is_public ? 'Public' : 'Private' }}</td>
+                    <td>
+                        <form action="{{ route('admin.projects.toggle', $project->id) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <button type="submit" class="btn btn-outline">
+                                <i
+                                    class="fas fa-toggle-{{ $project->is_public ? 'on' : 'off' }} {{ $project->is_public ? 'text-success' : 'text-danger' }} fa-2x"></i>
+                            </button>
+                        </form>
+                    </td>
                     <td>{{ $project->updated_at }}</td>
                     <td>
                         <div class="d-flex">
