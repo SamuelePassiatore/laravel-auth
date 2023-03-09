@@ -41,9 +41,9 @@ class ProjectController extends Controller
         ], [
             'title.unique' => "Esiste già un progetto dal titolo '$request->title'",
             'title.required' => "Il titolo è obbligatorio",
-            'image.url' => "L'immagine dev'essere un url",
-            'description.string' => 'La descrizione deve essere una stringa',
-            'url.url' => 'L\'url deve essere un url',
+            'image.url' => "L'immagine deve essere un link valido",
+            'description.string' => 'La descrizione deve avere contenuto',
+            'url.url' => 'L\'url deve essere un url valido',
             'url.unique' => 'L\'url deve essere unico',
         ]);
 
