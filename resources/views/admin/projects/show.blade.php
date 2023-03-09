@@ -13,7 +13,10 @@
             <div class="row row-cols-2 my-5">
                 {{-- PROJECT IMG  --}}
                 <div class="col d-flex justify-content-center py-5">
-                    <img src="{{ $project->image }}" alt="{{ $project->title }}" class="rounded overflow-hidden ">
+                    @if ($project->image)
+                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"
+                            class="rounded overflow-hidden ">
+                    @endif
                 </div>
                 {{-- PROJECT CONTENT --}}
                 <div class="col d-flex justify-content-center flex-column py-5">

@@ -19,7 +19,7 @@ class ProjectSeeder extends Seeder
             $project = new Project();
             $project->title = $faker->sentence;
             $project->description = $faker->paragraph();
-            $project->image = "https://picsum.photos/id/" . $faker->numberBetween(1, 50) . "/200";
+            // $project->image = "https://picsum.photos/id/" . $faker->numberBetween(1, 50) . "/200";
             $project->slug = Str::slug($project->title, '-');
             $project->url = $faker->url();
             $project->save();

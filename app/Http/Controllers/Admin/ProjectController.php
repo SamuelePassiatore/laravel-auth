@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -35,11 +37,11 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => 'required|string|unique:projects',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image',
             'description' => 'string',
             'url' => 'nullable|url|unique:projects',
         ], [
-            'title.unique' => "The title '$request->title' has already been taken."
+            'title.unique' => "The title '$request->title' has already been taken.",
         ]);
 
         $data = $request->all();
@@ -47,6 +49,11 @@ class ProjectController extends Controller
         $project = new Project();
 
         $data['slug'] = Str::slug($data['title']);
+
+        if (Arr::exists($data, 'image')) {
+            $img_url = Storage::put('projects', $data['image']);
+            $data['image'] = $img_url;
+        }
 
         $project->fill($data);
 
@@ -82,7 +89,7 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
-            'image' => 'nullable|url',
+            'image' => 'nullable|image',
             'description' => 'string',
             'url' => ['nullable', 'url', Rule::unique('projects')->ignore($project->id)],
         ], [
@@ -91,6 +98,13 @@ class ProjectController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']);
+
+        if (Arr::exists($data, 'image')) {
+            if ($project->image) Storage::delete($project->image);
+            $img_url = Storage::put('projects', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $project->update($data);
 
         return to_route('admin.projects.show', $project->id)
@@ -136,6 +150,7 @@ class ProjectController extends Controller
     public function drop(int $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
+        if ($project->image) Storage::delete($project->image);
         $project->forceDelete();
 
         return to_route('admin.projects.trash.index')
