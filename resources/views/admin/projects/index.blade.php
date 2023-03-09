@@ -13,9 +13,9 @@
                     <button class="btn btn-outline-secondary" type="submit">Cerca</button>
                 </div>
             </form> --}}
-            <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5">
+            <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5" id="filter-form">
                 <div class="input-group" style="width: 220px;">
-                    <select class="form-select" name="filter">
+                    <select class="form-select" name="filter" id="filter-status">
                         <option @if ($selected === 'all') selected @endif value="">All</option>
                         <option @if ($selected === 'public') selected @endif value="public">Public</option>
                         <option @if ($selected === 'private') selected @endif value="private">Private</option>
@@ -99,5 +99,11 @@
 @endsection
 
 @section('scripts')
-
+    <script>
+        const filterForm = document.getElementById('filter-form');
+        const filterStatus = document.getElementById('filter-status');
+        filterStatus.addEventListener('change', () => {
+            filterForm.submit();
+        })
+    </script>
 @endsection
