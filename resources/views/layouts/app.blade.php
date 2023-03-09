@@ -30,9 +30,9 @@
         @include('includes.navbar')
 
         <main class="container">
-            @include('includes.alert')
+            @include('includes.alerts.session')
             @auth
-                @include('includes.errors-alert')
+                @include('includes.alerts.errors')
             @endauth
 
             @yield('content')
