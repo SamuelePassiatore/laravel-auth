@@ -62,7 +62,7 @@ class ProjectController extends Controller
         $project->save();
 
         return to_route('admin.projects.show', $project->id)
-            ->with('message', "'$project->title' project was successfully created")
+            ->with('message', "'$project->title' project has been successfully created")
             ->with('type', 'success');
     }
 
@@ -119,7 +119,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
-            ->with('message', "'$project->title' project has been successfully put in trashcan")
+            ->with('message', "'$project->title' project has been successfully deleted")
             ->with('type', 'success');
     }
 
@@ -141,7 +141,7 @@ class ProjectController extends Controller
 
         $project->restore();
 
-        return to_route('admin.projects.index')->with('message', "'$project->title' has been restored.")->with('type', 'success');
+        return to_route('admin.projects.index')->with('message', "'$project->title' has been successfully restored.")->with('type', 'success');
     }
 
     /**
