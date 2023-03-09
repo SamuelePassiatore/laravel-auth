@@ -44,7 +44,7 @@
     </div>
     <div class="col-2 d-flex align-items-center justify-content-end">
         <div class="form-check form-switch me-5">
-            <label class="form-label" for="is_public">Public:</label>
+            <label class="form-label" for="is_public">Public</label>
             <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
                 @if (old('is_public', $project->is_public)) checked @endif>
         </div>

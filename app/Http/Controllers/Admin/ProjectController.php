@@ -59,6 +59,8 @@ class ProjectController extends Controller
 
         // $project->slug = Str::slug($project->title, '-');
 
+        $project->is_public = Arr::exists($data, 'is_public');
+
         $project->save();
 
         return to_route('admin.projects.show', $project->id)
@@ -104,6 +106,8 @@ class ProjectController extends Controller
             $img_url = Storage::put('projects', $data['image']);
             $data['image'] = $img_url;
         }
+
+        $data['is_public'] = Arr::exists($data, 'is_public');
 
         $project->update($data);
 
