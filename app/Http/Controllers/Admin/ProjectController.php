@@ -39,7 +39,7 @@ class ProjectController extends Controller
             'description' => 'string',
             'url' => 'nullable|url|unique:projects',
         ], [
-            'title.unique' => "The title $request->titlehas already been taken."
+            'title.unique' => "The title '$request->title' has already been taken."
         ]);
 
         $data = $request->all();
@@ -55,7 +55,7 @@ class ProjectController extends Controller
         $project->save();
 
         return to_route('admin.projects.show', $project->id)
-            ->with('message', "The $project->title project was successfully created")
+            ->with('message', "'$project->title' project was successfully created")
             ->with('type', 'success');
     }
 
@@ -86,7 +86,7 @@ class ProjectController extends Controller
             'description' => 'string',
             'url' => ['nullable', 'url', Rule::unique('projects')->ignore($project->id)],
         ], [
-            'title.unique' => "The title $request->titlehas already been taken."
+            'title.unique' => "The title '$request->title' has already been taken."
         ]);
 
         $data = $request->all();
@@ -95,7 +95,7 @@ class ProjectController extends Controller
 
         return to_route('admin.projects.show', $project->id)
             ->with('type', 'success')
-            ->with('message', "The $project->title project has been successfully modified");
+            ->with('message', "'$project->title' project has been successfully modified");
     }
 
     /**
@@ -105,7 +105,30 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
-            ->with('message', "The $project->title project has been successfully deleted")
+            ->with('message', "'$project->title' project has been successfully deleted")
             ->with('type', 'success');
     }
+
+    /**
+     * Show trashed elements
+     */
+    public function trash()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.trash.index', compact('projects'));
+    }
+
+    // public function restore(int $id)
+    // {
+    //     $tool = Tool::onlyTrashed()->findOrFail($id);
+    //     $tool->restore();
+    //     return to_route('tools.trash.index');
+    // }
+
+    // public function definitiveDelete(int $id)
+    // {
+    //     $tool = Tool::onlyTrashed()->findOrFail($id);
+    //     $tool->forceDelete();
+    //     return to_route('tools.trash.index');
+    // }
 }

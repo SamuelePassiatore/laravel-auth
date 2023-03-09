@@ -19,10 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GuestHomeController::class, 'index']);
 
+
 // Protected routes
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('/admin')->group(function () {
     // Dashboard routes
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+    //TRASH
+    Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash.index');
     // Project routes
     Route::resource('projects', ProjectController::class);
 });
