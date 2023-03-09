@@ -11,7 +11,7 @@
 @csrf
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
@@ -23,7 +23,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <div class="mb-3">
             <label for="slug" class="form-label">Slug:</label>
             <input type="text" class="form-control" id="slug" placeholder="Slug" disabled
@@ -40,6 +40,13 @@
                     {{ $message }}
                 </div>
             @enderror
+        </div>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-end">
+        <div class="form-check form-switch me-5">
+            <label class="form-label" for="is_public">Public:</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
+                @if (old('is_public', $project->is_public)) checked @endif>
         </div>
     </div>
     <div class="col-10">
@@ -68,7 +75,7 @@
     </div>
 </div>
 <hr>
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mb-3">
     <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary me-2">Back</a>
     <button type="submit" class="btn btn-primary">Save</button>
 </div>
