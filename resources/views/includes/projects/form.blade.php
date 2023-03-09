@@ -24,14 +24,9 @@
     </div>
     <div class="col-4">
         <div class="mb-3">
-            <label for="image" class="form-label">Image:</label>
-            <input type="url" class="form-control @error('image') is-invalid @enderror" id="image"
-                placeholder="Insert image" name="image" value="{{ old('image', $project->image) }}">
-            @error('image')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <label for="slug" class="form-label">Slug:</label>
+            <input type="text" class="form-control" id="slug" placeholder="Slug" disabled
+                value="{{ Str::slug(old('image', $project->title), '-') }}">
         </div>
     </div>
     <div class="col-4">
@@ -40,6 +35,18 @@
             <input type="text" class="form-control @error('url') is-invalid @enderror" id="url"
                 placeholder="Insert url" name="url" value="{{ old('url', $project->url) }}">
             @error('url')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-3">
+            <label for="image" class="form-label">Image:</label>
+            <input type="url" class="form-control @error('image') is-invalid @enderror" id="image"
+                placeholder="Insert image" name="image" value="{{ old('image', $project->image) }}">
+            @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
