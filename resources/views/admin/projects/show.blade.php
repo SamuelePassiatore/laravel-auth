@@ -32,9 +32,17 @@
             </div>
 
             {{-- BUTTONS --}}
-            <div class="d-flex justify-content-center my-5">
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left me-2"></i>Back</a>
+            <div class="d-flex justify-content-between my-5">
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary me-2">
+                    <i class="fas fa-arrow-left me-2"></i>Back
+                </a>
+                <form action="{{ route('admin.projects.toggle', $project->id) }}" method="POST">
+                    @method('PATCH')
+                    @csrf
+                    <button type="submit" class="btn btn-outline-{{ $project->is_public ? 'danger' : 'success' }}">
+                        {{ $project->is_public ? 'Draft' : 'Publish' }}
+                    </button>
+                </form>
                 <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form"
                     data-name="project">
                     @method('DELETE')

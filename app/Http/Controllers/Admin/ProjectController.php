@@ -182,7 +182,7 @@ class ProjectController extends Controller
         $action = $project->is_public ? 'published' : 'drafted';
         $type = $project->is_public ? 'success' : 'info';
         $project->save();
-        return to_route('admin.projects.index')
+        return redirect()->back()
             ->with('message', "'$project->title' project has been successfully $action")
             ->with('type', $type);
     }
