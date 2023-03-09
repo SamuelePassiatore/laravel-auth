@@ -21,6 +21,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Url</th>
+                <th scope="col">Status</th>
                 <th scope="col">Update at</th>
                 <th scope="col"></th>
             </tr>
@@ -32,6 +33,7 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>{{ $project->url }}</td>
+                    <td>{{ $project->is_public ? 'Public' : 'Private' }}</td>
                     <td>{{ $project->updated_at }}</td>
                     <td>
                         <div class="d-flex">
@@ -56,7 +58,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td scope="row" colspan="5" class="text-center">There aren't projects in portfolio</td>
+                    <td scope="row" colspan="7" class="text-center">There aren't projects in portfolio</td>
                 </tr>
             @endforelse
 
