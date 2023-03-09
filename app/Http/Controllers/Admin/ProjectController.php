@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('updated_at', 'DESC')->paginate(5);
+        $projects = Project::orderBy('updated_at', 'DESC')->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -132,7 +132,7 @@ class ProjectController extends Controller
      */
     public function trash()
     {
-        $projects = Project::onlyTrashed()->paginate(5);
+        $projects = Project::onlyTrashed()->paginate(10);
         return view('admin.projects.trash.index', compact('projects'));
     }
 

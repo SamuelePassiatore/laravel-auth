@@ -6,9 +6,25 @@
 
     <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
-        <div>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
-                <i class="fas fa-plus me-2"></i>Add project
+        <div class="d-flex">
+            {{-- <form method="GET" action="" class="me-5">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Project title" name="search" value="">
+                    <button class="btn btn-outline-secondary" type="submit">Cerca</button>
+                </div>
+            </form> --}}
+            <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5">
+                <div class="input-group" style="width: 220px;">
+                    <select class="form-select" name="filter">
+                        <option selected value="">All</option>
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                    </select>
+                    <button class="btn btn-outline-secondary" type="submit">Filter</button>
+                </div>
+            </form>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-success me-2">
+                <i class="fas fa-plus"></i>Add project
             </a>
             <a href="{{ route('admin.projects.trash.index') }}" class="btn btn-danger">Trash</a>
         </div>
