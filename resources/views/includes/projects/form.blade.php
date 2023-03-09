@@ -45,17 +45,13 @@
     <div class="col-10">
         <div class="mb-3 mt-5">
             <label for="image" class="form-label">Image:</label>
-            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
-                name="image" value="{{ old('image', $project->image) }}">
-            @error('image')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+            <input type="file" class="form-control" id="image" name="image"
+                value="{{ old('image', $project->image) }}">
         </div>
     </div>
     <div class="col-2">
-        <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+        <img id="img-preview"
+            src="{{ $project->image ? asset('storage/' . $project->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
             alt="">
     </div>
     <div class="col-12">
@@ -88,5 +84,21 @@
         });
     </script>
 
-    <script></script>
+    <script>
+        const imageInput = document.getElementById('image');
+        const imagePreview = document.getElementById('img-preview');
+        const placeholder = 'https://marcolanci.it/utils/placeholder.jpg';
+
+        imageInput.addEventListener('change', () => {
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.readAsDataURL(imageInput.files[0]);
+                reader.onload = e => {
+                    imagePreview.src = e.target.result;
+                }
+            } else {
+                imagePreview.src = placeholder;
+            }
+        })
+    </script>
 @endsection
