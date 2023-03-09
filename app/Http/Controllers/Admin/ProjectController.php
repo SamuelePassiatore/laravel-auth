@@ -175,4 +175,15 @@ class ProjectController extends Controller
             ->with('message', "$num_projects projects successfully removed")
             ->with('type', 'success');
     }
+
+    public function togglePubblic(Project $project)
+    {
+        $project->is_publish = !$project->is_publish;
+        $action = $project->is_public ? 'published' : 'drafted';
+        $type = $project->is_public ? 'success' : 'info';
+        $project->save();
+        return to_route('admin.projects.index')
+            ->with('message', "'$project->title' project has been successfully $action")
+            ->with('type', $type);
+    }
 }
