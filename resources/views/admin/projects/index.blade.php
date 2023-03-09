@@ -7,7 +7,7 @@
     <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
         <a href="{{ route('admin.projects.create') }}" class="btn btn-small btn-success">
-            <i class="fas fa-plus me-2"></i>Aggiungi progetto</a>
+            <i class="fas fa-plus me-2"></i>Add project</a>
     </header>
 
     <table class="table">
@@ -34,7 +34,7 @@
                             <i class="fas fa-eye"></i>
                         </a>
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST"
-                            class="delete-form" data-name="progetto">
+                            class="delete-form" data-name="project">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-small btn-danger mx-2">

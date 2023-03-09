@@ -12,9 +12,9 @@
 <div class="row">
     <div class="col-4">
         <div class="mb-3">
-            <label for="title" class="form-label">Titolo:</label>
+            <label for="title" class="form-label">Title:</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                placeholder="Titolo progetto" name="title" required value="{{ old('title', $project->title) }}">
+                placeholder="Insert title" name="title" required value="{{ old('title', $project->title) }}">
             @error('title')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -24,9 +24,9 @@
     </div>
     <div class="col-4">
         <div class="mb-3">
-            <label for="image" class="form-label">Immagine:</label>
+            <label for="image" class="form-label">Image:</label>
             <input type="url" class="form-control @error('image') is-invalid @enderror" id="image"
-                placeholder="Immagine progetto" name="image" value="{{ old('image', $project->image) }}">
+                placeholder="Insert image" name="image" value="{{ old('image', $project->image) }}">
             @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -38,7 +38,7 @@
         <div class="mb-3">
             <label for="url" class="form-label">Url:</label>
             <input type="text" class="form-control @error('url') is-invalid @enderror" id="url"
-                placeholder="Url progetto" name="url" value="{{ old('url', $project->url) }}">
+                placeholder="Insert url" name="url" value="{{ old('url', $project->url) }}">
             @error('url')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -48,9 +48,9 @@
     </div>
     <div class="col-12">
         <div class="mb-3">
-            <label for="description" class="form-label">Descrizione:</label>
+            <label for="description" class="form-label">Description:</label>
             <textarea name="description" id="description" rows="5"
-                class="form-control @error('description') is-invalid @enderror" placeholder="Descrizione progetto">{{ old('description', $project->description) }}</textarea>
+                class="form-control @error('description') is-invalid @enderror" placeholder="Insert description">{{ old('description', $project->description) }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -61,7 +61,7 @@
 </div>
 <hr>
 <div class="d-flex justify-content-between">
-    <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary me-2">Torna indietro</a>
-    <button type="submit" class="btn btn-primary">Salva</button>
+    <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary me-2">Back</a>
+    <button type="submit" class="btn btn-primary">Save</button>
 </div>
 </form>

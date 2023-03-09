@@ -39,12 +39,7 @@ class ProjectController extends Controller
             'description' => 'string',
             'url' => 'nullable|url|unique:projects',
         ], [
-            'title.unique' => "Esiste già un progetto dal titolo '$request->title'",
-            'title.required' => "Il titolo è obbligatorio",
-            'image.url' => "L'immagine deve essere un link valido",
-            'description.string' => 'La descrizione deve avere contenuto',
-            'url.url' => 'L\'url deve essere un url valido',
-            'url.unique' => 'L\'url deve essere unico',
+            'title.unique' => "The title $request->titlehas already been taken."
         ]);
 
         $data = $request->all();
@@ -60,7 +55,7 @@ class ProjectController extends Controller
         $project->save();
 
         return to_route('admin.projects.show', $project->id)
-            ->with('message', "Creazione progetto '$project->title' avvenuta con successo")
+            ->with('message', "The $project->title project was successfully created")
             ->with('type', 'success');
     }
 
@@ -91,12 +86,7 @@ class ProjectController extends Controller
             'description' => 'string',
             'url' => ['nullable', 'url', Rule::unique('projects')->ignore($project->id)],
         ], [
-            'title.unique' => "Esiste già un progetto dal titolo '$request->title'",
-            'title.required' => "Il titolo è obbligatorio",
-            'image.url' => "L'immagine dev'essere un url",
-            'description.string' => 'La descrizione deve essere una stringa',
-            'url.url' => 'L\'url inserito non è valido',
-            'url.unique' => 'L\'url deve essere unico',
+            'title.unique' => "The title $request->titlehas already been taken."
         ]);
 
         $data = $request->all();
@@ -105,7 +95,7 @@ class ProjectController extends Controller
 
         return to_route('admin.projects.show', $project->id)
             ->with('type', 'success')
-            ->with('message', "Modifica progetto '$project->title' avvenuta con successo");
+            ->with('message', "The $project->title project has been successfully modified");
     }
 
     /**
@@ -115,7 +105,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
-            ->with('message', "Eliminazione progetto '$project->title' avvenuta con successo")
+            ->with('message', "The $project->title project has been successfully deleted")
             ->with('type', 'success');
     }
 }
