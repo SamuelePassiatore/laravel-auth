@@ -105,12 +105,12 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
-            ->with('message', "'$project->title' project has been successfully deleted")
+            ->with('message', "'$project->title' project has been successfully put in trashcan")
             ->with('type', 'success');
     }
 
     /**
-     * Show trashed elements
+     * Display a listing of the trashed resource.
      */
     public function trash()
     {
@@ -118,17 +118,42 @@ class ProjectController extends Controller
         return view('admin.projects.trash.index', compact('projects'));
     }
 
-    // public function restore(int $id)
+    /**
+     * Restores a single resource from trash to active records.
+     */
+    public function restore(int $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+
+        $project->restore();
+
+        return to_route('admin.projects.index')->with('message', "'$project->title' has been restored.")->with('type', 'success');
+    }
+
+    /**
+     * Permanently remove the specified resource from storage.
+     */
+    // public function drop(int $id)
     // {
-    //     $tool = Tool::onlyTrashed()->findOrFail($id);
-    //     $tool->restore();
-    //     return to_route('tools.trash.index');
+    //     $team = Team::onlyTrashed()->findOrFail($id);
+    //     $team->forceDelete();
+
+    //     return to_route('teams.trash.index')
+    //         ->with('message', "La squadra $team->short_name è stata eliminata definitivamente")
+    //         ->with('type', 'success');
     // }
 
-    // public function definitiveDelete(int $id)
+    // public function dropAll()
     // {
-    //     $tool = Tool::onlyTrashed()->findOrFail($id);
-    //     $tool->forceDelete();
-    //     return to_route('tools.trash.index');
+
+    //     $num_teams = Team::onlyTrashed()->count();
+
+
+    //     Team::onlyTrashed()->forceDelete();
+
+
+    //     return to_route('teams.trash.index')
+    //         ->with('message', "$num_teams squadre eliminate con successo")
+    //         ->with('type', 'success');
     // }
 }

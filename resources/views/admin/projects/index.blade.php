@@ -7,10 +7,10 @@
     <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
         <div>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-small btn-success">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
                 <i class="fas fa-plus me-2"></i>Add project
             </a>
-            <a href="{{ route('admin.projects.trash.index') }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+            <a href="{{ route('admin.projects.trash.index') }}" class="btn btn-danger">Trash</a>
         </div>
     </header>
 
@@ -34,18 +34,18 @@
                     <td>{{ $project->url }}</td>
                     <td>{{ $project->updated_at }}</td>
                     <td class="d-flex justify-content-end align-items-center">
-                        <a class="btn btn-small btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
+                        <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
                             <i class="fas fa-eye"></i>
                         </a>
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST"
                             class="delete-form" data-name="project">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-small btn-danger mx-2">
+                            <button type="submit" class="btn btn-sm btn-danger mx-2">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
-                        <a class="btn btn-small btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
+                        <a class="btn btn-sm btn-warning" href="{{ route('admin.projects.edit', $project->id) }}">
                             <i class="fas fa-pencil"></i>
                         </a>
                     </td>
