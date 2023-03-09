@@ -16,9 +16,9 @@
             <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5">
                 <div class="input-group" style="width: 220px;">
                     <select class="form-select" name="filter">
-                        <option selected value="">All</option>
-                        <option value="public">Public</option>
-                        <option value="private">Private</option>
+                        <option @if ($selected === 'all') selected @endif value="">All</option>
+                        <option @if ($selected === 'public') selected @endif value="public">Public</option>
+                        <option @if ($selected === 'private') selected @endif value="private">Private</option>
                     </select>
                     <button class="btn btn-outline-secondary" type="submit">Filter</button>
                 </div>

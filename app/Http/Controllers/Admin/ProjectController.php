@@ -15,10 +15,21 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::orderBy('updated_at', 'DESC')->paginate(10);
-        return view('admin.projects.index', compact('projects'));
+        $filter = $request->query('filter');
+
+        $selected = $filter ? $filter : 'all';
+
+        $query = Project::orderBy('updated_at', 'DESC');
+
+        if ($filter) {
+            $value = $filter === 'private' ? 0 : 1;
+            $query->where('is_public', $value);
+        }
+
+        $projects = $query->paginate(10);
+        return view('admin.projects.index', compact('projects', 'selected'));
     }
 
     /**
