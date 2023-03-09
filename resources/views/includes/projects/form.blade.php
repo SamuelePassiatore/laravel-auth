@@ -72,3 +72,14 @@
     <button type="submit" class="btn btn-primary">Save</button>
 </div>
 </form>
+
+@section('scripts')
+    <script>
+        const titleInput = document.getElementById('title');
+        const slugInput = document.getElementById('slug');
+
+        titleInput.addEventListener('blur', () => {
+            slugInput.value = titleInput.value.toLowerCase().split(' ').join('-');
+        });
+    </script>
+@endsection
