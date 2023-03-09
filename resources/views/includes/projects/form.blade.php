@@ -42,8 +42,8 @@
             @enderror
         </div>
     </div>
-    <div class="col-12">
-        <div class="mb-3">
+    <div class="col-10">
+        <div class="mb-3 mt-5">
             <label for="image" class="form-label">Image:</label>
             <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
                 name="image" value="{{ old('image', $project->image) }}">
@@ -53,6 +53,10 @@
                 </div>
             @enderror
         </div>
+    </div>
+    <div class="col-2">
+        <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+            alt="">
     </div>
     <div class="col-12">
         <div class="mb-3">
@@ -83,4 +87,6 @@
             slugInput.value = titleInput.value.toLowerCase().split(' ').join('-');
         });
     </script>
+
+    <script></script>
 @endsection
