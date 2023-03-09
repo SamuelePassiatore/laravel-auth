@@ -133,15 +133,15 @@ class ProjectController extends Controller
     /**
      * Permanently remove the specified resource from storage.
      */
-    // public function drop(int $id)
-    // {
-    //     $team = Team::onlyTrashed()->findOrFail($id);
-    //     $team->forceDelete();
+    public function drop(int $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->forceDelete();
 
-    //     return to_route('teams.trash.index')
-    //         ->with('message', "La squadra $team->short_name è stata eliminata definitivamente")
-    //         ->with('type', 'success');
-    // }
+        return to_route('admin.projects.trash.index')
+            ->with('message', "'$project->title' has been deleted permanently")
+            ->with('type', 'success');
+    }
 
     // public function dropAll()
     // {

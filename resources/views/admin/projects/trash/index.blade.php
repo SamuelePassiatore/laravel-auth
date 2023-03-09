@@ -37,11 +37,11 @@
                             @method('PATCH')
                             <button class="btn btn-primary me-2" type="submit">Restore</button>
                         </form>
-                        {{-- <form action="{{ route('tools.trash.definitive-delete', $tool->id) }}" method="POST">
+                        <form action="{{ route('admin.projects.trash.drop', $project->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete Permanently</button>
-                        </form> --}}
+                        </form>
                     </td>
 
                 </tr>
