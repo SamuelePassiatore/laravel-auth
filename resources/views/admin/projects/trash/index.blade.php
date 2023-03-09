@@ -50,11 +50,15 @@
                     <td scope="row" colspan="5" class="text-center">There aren't projects in portfolio</td>
                 </tr>
             @endforelse
-
-
         </tbody>
     </table>
-
+    <div class="d-flex justify-content-center">
+        <form action="{{ route('admin.projects.trash.dropAll') }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Empty trash</button>
+        </form>
+    </div>
 @endsection
 
 @section('scripts')

@@ -143,17 +143,17 @@ class ProjectController extends Controller
             ->with('type', 'success');
     }
 
-    // public function dropAll()
-    // {
+    public function dropAll()
+    {
 
-    //     $num_teams = Team::onlyTrashed()->count();
-
-
-    //     Team::onlyTrashed()->forceDelete();
+        $num_projects = Project::onlyTrashed()->count();
 
 
-    //     return to_route('teams.trash.index')
-    //         ->with('message', "$num_teams squadre eliminate con successo")
-    //         ->with('type', 'success');
-    // }
+        Project::onlyTrashed()->forceDelete();
+
+
+        return to_route('admin.projects.trash.index')
+            ->with('message', "$num_projects projects successfully removed")
+            ->with('type', 'success');
+    }
 }
