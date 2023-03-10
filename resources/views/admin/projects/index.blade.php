@@ -6,17 +6,17 @@
 
     <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
-        <div class="d-flex">
-            <form class="me-5" method="GET" action="{{ route('admin.projects.index') }}">
-                <div class="input-group ">
-                    <input type="text" class="form-control" placeholder="Insert a project title" name="search"
-                        value="{{ $search }}" id="search-input">
+        <div class="d-flex align-items-center">
+            <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5 d-flex" id="filter-form">
+                <div class="input-group d-flex align-items-center">
+                    <label for="search-input">Title</label>
+                    <input type="text" class="form-control ms-2" placeholder="Insert a project title" name="search"
+                        value="{{ $search }}" id="search-input" style="width: 50px">
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
-            </form>
-            <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5" id="filter-form">
-                <div class="input-group" style="width: 220px;">
-                    <select class="form-select" name="filter" id="filter-status">
+                <div class="input-group d-flex align-items-center ms-5" style="width: 380px;">
+                    <label for="filter-status">Status</label>
+                    <select class="form-select ms-2" name="filter" id="filter-status">
                         <option @if ($selected === 'all') selected @endif value="">All</option>
                         <option @if ($selected === 'public') selected @endif value="public">Public</option>
                         <option @if ($selected === 'private') selected @endif value="private">Private</option>
@@ -84,7 +84,8 @@
                 </tr>
             @empty
                 <tr>
-                    <td scope="row" colspan="7" class="text-center">There aren't projects in portfolio</td>
+                    <td scope="row" colspan="7" class="text-center">There aren't projects in portfolio with these
+                        characteristics</td>
                 </tr>
             @endforelse
 

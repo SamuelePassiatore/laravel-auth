@@ -51,10 +51,17 @@
     </div>
     <div class="col-10">
         <div class="mb-3 mt-5">
-            <label for="image" class="form-label">Image:</label>
+            <label for="image" class="form-label @error('image') is-invalid @enderror">Image:</label>
             <input type="file" class="form-control" id="image" name="image"
                 value="{{ old('image', $project->image) }}">
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+            {{-- @if ($project->image) --}}
             <button type="button" id="change-image" class="btn btn-primary mb-3 d-none">Cambia immagine</button>
+            {{-- @endif --}}
         </div>
     </div>
     <div class="col-2">
