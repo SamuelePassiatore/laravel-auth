@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::where('is_public', true)->orderBy('updated_at', 'DESC')->paginate(10);
         return view('guest.home', compact('projects'));
     }
 }
