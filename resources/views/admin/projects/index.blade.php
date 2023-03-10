@@ -10,7 +10,7 @@
             <form class="me-5" method="GET" action="{{ route('admin.projects.index') }}">
                 <div class="input-group ">
                     <input type="text" class="form-control" placeholder="Insert a project title" name="search"
-                        value="{{ $search }}">
+                        value="{{ $search }}" id="search-input">
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </form>
@@ -107,4 +107,11 @@
             filterForm.submit();
         })
     </script>
+
+    {{-- <script>
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', () => {
+            const searchValue = searchInput.value.trim();
+        });
+    </script> --}}
 @endsection

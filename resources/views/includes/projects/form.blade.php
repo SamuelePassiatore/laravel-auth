@@ -54,6 +54,7 @@
             <label for="image" class="form-label">Image:</label>
             <input type="file" class="form-control" id="image" name="image"
                 value="{{ old('image', $project->image) }}">
+            <button type="button" id="change-image" class="btn btn-primary mb-3 d-none">Cambia immagine</button>
         </div>
     </div>
     <div class="col-2">
@@ -107,5 +108,19 @@
                 imagePreview.src = placeholder;
             }
         })
+    </script>
+
+    <script>
+        // const imageInput = document.getElementById('image');
+        // const imagePreview = document.getElementById('img-preview');
+        // const changeImageBtn = document.getElementById('change-image');
+        // const placeholder = 'https://marcolanci.it/utils/placeholder.jpg';
+
+        // if (imagePreview.src !== placeholder) {
+        //     // Se sì, mostra l'input file per consentire all'utente di cambiare l'immagine
+        //     imageInput.style.display = 'block';
+        // }
+        // // Nascondi il bottone "Change Image"
+        // changeImageBtn.style.display = 'none';
     </script>
 @endsection
