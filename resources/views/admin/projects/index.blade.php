@@ -7,12 +7,13 @@
     <header class="my-4 d-flex justify-content-between align-items-center">
         <h1>Projects</h1>
         <div class="d-flex">
-            {{-- <form method="GET" action="" class="me-5">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Project title" name="search" value="">
-                    <button class="btn btn-outline-secondary" type="submit">Cerca</button>
+            <form class="me-5" method="GET" action="{{ route('admin.projects.index') }}">
+                <div class="input-group ">
+                    <input type="text" class="form-control" placeholder="Insert a project title" name="search"
+                        value="{{ $search }}">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
-            </form> --}}
+            </form>
             <form method="GET" action="{{ route('admin.projects.index') }}" class="me-5" id="filter-form">
                 <div class="input-group" style="width: 220px;">
                     <select class="form-select" name="filter" id="filter-status">

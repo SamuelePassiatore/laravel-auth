@@ -18,6 +18,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $filter = $request->query('filter');
+        $search = $request->query('search');
 
         $selected = $filter ? $filter : 'all';
 
@@ -28,8 +29,12 @@ class ProjectController extends Controller
             $query->where('is_public', $value);
         }
 
+        if ($search) {
+            $query->where('title', 'LIKE', "%$search%");
+        }
+
         $projects = $query->paginate(10);
-        return view('admin.projects.index', compact('projects', 'selected'));
+        return view('admin.projects.index', compact('projects', 'selected', 'search'));
     }
 
     /**
